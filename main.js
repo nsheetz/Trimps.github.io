@@ -3119,7 +3119,9 @@ function importPerks() {
 		if (game.portal[perk].locked || level > game.portal[perk].max || isNumberBad(level))
 			return "Cannot set " + perk + " to level " + level + ".";
 
-		if (level < game.portal[perk].level)
+		if (portalUniverse == 1 && level < game.portal[perk].level)
+			respecNeeded = true;			
+		if (portalUniverse == 2 && level < game.portal[perk].radLevel)
 			respecNeeded = true;
 
 		changeAmt[perk] = level - game.portal[perk][levelName] - game.portal[perk].levelTemp;
